@@ -1,8 +1,13 @@
 package com.example.bigevent.pojo;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDateTime;
 
+@Data
 public class Article {
     private Integer id;//主键ID
     private String title;//文章标题
