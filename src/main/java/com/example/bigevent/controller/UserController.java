@@ -6,7 +6,9 @@ import com.example.bigevent.pojo.User;
 import com.example.bigevent.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import jakarta.validation.constraints.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @Api(tags = "用户相关接口")
+@Validated
 @RestController
 @RequestMapping("/user")
 public class UserController {
@@ -25,7 +28,7 @@ public class UserController {
 
     @ApiOperation("注册")
     @PostMapping("/register")
-    public Result register(String username, String password) {
+    public Result register(@Pattern(regexp = "^\\S{5,16}$") String username,@Pattern(regexp = "^\\S{5,16}$")String password) {
         //查询用户
         User u = userService.findByUserName(username);
         if (u == null) {
@@ -35,6 +38,5 @@ public class UserController {
         } else {
             return Result.error("用户名已被占用");
         }
-
     }
 }
