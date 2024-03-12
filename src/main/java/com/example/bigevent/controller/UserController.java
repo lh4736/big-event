@@ -1,6 +1,5 @@
 package com.example.bigevent.controller;
 
-import com.example.bigevent.pojo.PageBean;
 import com.example.bigevent.pojo.Result;
 import com.example.bigevent.pojo.User;
 import com.example.bigevent.service.UserService;
